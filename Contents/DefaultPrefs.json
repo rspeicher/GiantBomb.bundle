@@ -1,0 +1,9 @@
+[
+  {
+    "id": "api_key",
+    "label": "API Key",
+    "type": "text",
+    "default": "",
+    "secure": "true"
+  }
+]
