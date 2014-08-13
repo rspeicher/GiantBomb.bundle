@@ -8,7 +8,7 @@ configuration options.
 
 Currently the only reliable way to look up a video in the API is via its unique
 ID, so the agent expects any downloaded file's name to begin with the ID (e.g.,
-09313 - Quick Look Mount Your Friends.mp4)
+`09313 - Quick Look Mount Your Friends.mp4`)
 
 ## License
 
