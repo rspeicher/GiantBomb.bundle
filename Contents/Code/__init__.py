@@ -1,3 +1,5 @@
+import cast
+
 VIDEO_ENDPOINT = "http://www.giantbomb.com/api/video/%d/?api_key=%s&format=json"
 
 def Start():
@@ -33,11 +35,18 @@ class GiantBombAgent(Agent.Movies):
     def update(self, metadata, media, lang):
         obj = getJSON(metadata.id)
 
-        metadata.duration = obj['length_seconds'] * 1000
-        metadata.title = obj['name']
-        metadata.year = int(obj['publish_date'].split("-")[0])
-        metadata.summary = obj['deck']
         metadata.collections = [obj['video_type']]
+        metadata.duration    = obj['length_seconds'] * 1000
+        metadata.studio      = 'Giant Bomb'
+        metadata.summary     = obj['deck']
+        metadata.title       = obj['name']
+        metadata.year        = int(obj['publish_date'].split("-")[0])
+
+        members = cast.cast_from_deck(obj['deck'])
+        for member in members:
+            role = metadata.roles.new()
+            role.role = 'Self'
+            role.actor = member
 
         image = obj['image']['super_url']
         metadata.posters[image] = Proxy.Media(HTTP.Request(image).content)
