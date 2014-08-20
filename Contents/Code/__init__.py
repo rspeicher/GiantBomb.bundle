@@ -13,7 +13,7 @@ def getJSON(video_id):
 
 class GiantBombAgent(Agent.Movies):
 
-    name = 'GiantBomb'
+    name = 'Giant Bomb'
     languages = [Locale.Language.English]
     primary_provider = True
     accepts_from = ['com.plexapp.agents.localmedia']
