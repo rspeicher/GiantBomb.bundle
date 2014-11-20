@@ -15,12 +15,15 @@ def cast_from_deck(deck):
 
     >>> cast_from_deck("Dr. Doctor gave me the news... I've got a bad case of Brad and Drew.")
     ['Brad Shoemaker', 'Drew Scanlon']
+
+    >>> cast_from_deck("Join the ninja, the skipper, and the douche (and Dan and Brad) as they unravel the mystery of Dead Island. But also escape from it? I think?")
+    ['Dan Ryckert', 'Brad Shoemaker']
     """
 
     cast = []
 
-    # Translate periods, commas and apostrophes into spaces.
-    deck = deck.translate(maketrans(".,'", "   "))
+    # Translate punctuation into spaces.
+    deck = deck.translate(maketrans(".,'()", "     "))
     words = deck.split()
 
     for w in words:
