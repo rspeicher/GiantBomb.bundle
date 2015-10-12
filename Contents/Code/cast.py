@@ -29,6 +29,8 @@ def cast_from_deck(deck):
     for w in words:
         if w == "Alex":
             cast.append('Alex Navarro')
+        elif w == "Austin":
+            cast.append('Austin Walker')
         elif w == "Brad":
             cast.append('Brad Shoemaker')
         elif w == "Dan":
