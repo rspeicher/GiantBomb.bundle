@@ -1,6 +1,6 @@
 import cast
 
-VIDEO_ENDPOINT = "http://www.giantbomb.com/api/video/%d/?api_key=%s&format=json"
+VIDEO_ENDPOINT = "https://www.giantbomb.com/api/video/%d/?api_key=%s&format=json"
 
 def Start():
     HTTP.CacheTime = CACHE_1DAY
