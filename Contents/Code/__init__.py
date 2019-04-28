@@ -3,9 +3,9 @@ VIDEO_ENDPOINT = "https://www.giantbomb.com/api/video/%s/?api_key=%s&format=json
 def Start():
     HTTP.CacheTime = CACHE_1DAY
 
-def getJSON(video_id):
-    video_id = str(video_id)
-    url = VIDEO_ENDPOINT % (video_id, Prefs['api_key'])
+def getJSON(video_guid):
+    video_guid = str(video_guid)
+    url = VIDEO_ENDPOINT % (video_guid, Prefs['api_key'])
 
     return JSON.ObjectFromURL(url)['results']
 
@@ -18,12 +18,13 @@ class GiantBombAgent(Agent.Movies):
     contributes_to = ['com.plexapp.agents.localmedia']
 
     def search(self, results, media, lang, manual):
-        video_id = str(media.name.split()[0])
-        obj = getJSON(video_id)
+        parts = media.name.split()
+        video_guid = str(parts[0]) + '-' + str(parts[1])
+        obj = getJSON(video_guid)
         year = obj['publish_date'].split("-")[0]
 
         results.Append(MetadataSearchResult(
-            id=str(video_id.split('-')[1]),
+            id=str(video_guid.split('-')[1]),
             name=obj['name'],
             year=year,
             score=100,
