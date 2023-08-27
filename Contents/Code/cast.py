@@ -47,5 +47,9 @@ def cast_from_deck(deck):
             cast.append('Ryan Davis')
         elif w == "Vinny":
             cast.append('Vinny Caravella')
+        elif w == "Abby":
+            cast.append('Abby Russell')
+        elif w == "Ben":
+            cast.append('Ben Pack')
 
     return cast
