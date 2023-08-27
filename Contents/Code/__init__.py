@@ -24,7 +24,7 @@ class GiantBombAgent(Agent.Movies):
         year = obj['publish_date'].split("-")[0]
 
         results.Append(MetadataSearchResult(
-            id=str(video_guid.split('-')[1]),
+            id=str(video_guid),
             name=obj['name'],
             year=year,
             score=100,
